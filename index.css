@@ -1,0 +1,615 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  text-decoration: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+h2,h3,h1{
+  font-weight: bold;
+    color: #78b2ff; /* Light blue for heading */
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px #3a9bdc, 0 0 10px #00d4ff; /* Glowing effect */
+}
+body,html {
+  /* พื้นหลังเป็นสีดำสนิท */
+  background-color: #000000;
+  /* ใช้รูปภาพพื้นหลังสำหรับธีมอวกาศ */
+  background-image: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+                    radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+                    radial-gradient(circle at 50% 70%, #2C003E, transparent 60%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff; /* สีข้อความเป็นสีขาว */
+}
+nav {
+  width: 100%;
+  height: 7vw;
+  background-image:  radial-gradient(circle at 30% 40%, rgba(29, 27, 58, 0.8), transparent 40%),
+  radial-gradient(circle at 70% 20%, rgba(13, 59, 102, 0.7), transparent 50%),
+  radial-gradient(circle at 40% 80%, rgba(44, 0, 62, 0.6), transparent 60%),
+  radial-gradient(circle at 80% 80%, rgba(13, 27, 42, 0.7), transparent 50%),
+  radial-gradient(circle at 20% 70%, rgba(105, 48, 195, 0.6), transparent 50%),
+  radial-gradient(circle at 90% 50%, rgba(255, 255, 255, 0.3), transparent 40%),
+  linear-gradient(to bottom, #000010, #0D1B2A);
+}
+.nav-container {
+  max-width: 90vw;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logonav {
+  width: 7vw;
+  object-fit: contain;
+
+}
+.nav-profile {
+  display: flex;
+  align-items: center;
+}
+.nav-profile-name {
+  color: #fff;
+  font-size: 1.2vw;
+  margin-right: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown button:hover {
+  background: linear-gradient(135deg, #5b0eac 0%, #1f5ac4 100%);
+  transform: scale(1.05);
+}
+
+/* Dropdown content with space theme */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: linear-gradient(135deg, #1e1e2f, #282846);
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1;
+  animation: dropdownFade 0.3s ease forwards;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #e0e0ff;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* Hover effect for links */
+.dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 24px;
+  color: #8ab6ff;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Smooth fade-in effect for dropdown */
+@keyframes dropdownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.fa-cart-shopping {
+  font-size: 2vw;
+}
+.nav-profile-cart {
+  position: relative;
+}
+
+.cartcount {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 25px;
+  height: 25px;
+  background: #50084aed;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color           : radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+                    radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+                    radial-gradient(circle at 50% 70%, #2C003E, transparent 60%);
+}
+.container {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+}
+.sidebar {
+  width: 20%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  
+}
+.product {
+  width: 80%;
+  padding: 10px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.sidebar-search {
+  padding: 10px;
+  border: 2px solid transparent;
+  width: 100%;
+  font-size: 1.2vw;
+  outline: none;
+  border-radius: 5px;
+  background: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+  radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+  radial-gradient(circle at 50% 70%, #2C003E, transparent 60%);
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+.sidebar-search:focus {
+  border: 2px solid #974190;
+}
+.sidebar-items ,input{
+  background: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+              radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+              radial-gradient(circle at 50% 70%,  #2C003E, transparent 60%);;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  color: #fff;
+  transition: 300ms;
+  font-size: 1.2vw;
+}
+.sidebar-items:hover {
+  background: radial-gradient(circle at 20% 20%, #9c97e2, transparent 60%),
+  radial-gradient(circle at 80% 30%, #0c4275, transparent 60%),
+  radial-gradient(circle at 50% 70%, #020420, transparent 60%);
+  color: #fff;
+}
+.product-items {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.product-items:hover {
+  transform: scale(1.03);
+}
+.product-img {
+  width: 100%;
+  height: 17vw;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.modal,
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-page {
+  z-index: 99;
+  min-width: 30vw;
+  max-width: 60vw;
+  max-height: 30vw;
+  overflow: scroll;
+  background: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+                    radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+                    radial-gradient(circle at 50% 70%, #2C003E, transparent 60%);
+  border-radius: 15px;
+  padding: 20px;
+}
+.modaldesc-content {
+  width: 100%;
+  display: flex;
+}
+.modaldesc-detail {
+  margin-left: 20px;
+}
+.modaldesc-img {
+  width: 20vw;
+  height: 20vw;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.btn-control {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2vw;
+  transition: 0.3s;
+}
+.btn-buy {
+  background: linear-gradient(125deg, #50084a, #0e0507);
+  color: #fff;
+  margin-left: 10px;
+}
+.cartlist {
+}
+.cartlist-items {
+  width: 50vw;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.cartlist-left {
+  display: flex;
+}
+.cartlist-right {
+  display: flex;
+  align-items: center;
+}
+.cartlist-left img {
+  width: 5vw;
+  height: 5vw;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.btnc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+
+/* เพิ่มส่วนของ Team Members Section */
+/* ส่วนที่แสดงจำนวนสมาชิกทั้งหมด */
+/* Space-themed background and general styles */
+/* Starry space background */
+/* Overall body style */
+.ad{
+   text-align: center;
+}
+.b{
+  background: radial-gradient(circle, #1a1a40, #050d1a) fixed;
+  color: #b0d1f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://i.imgur.com/xV9jwqD.png'); /* Starry effect */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Team container styling */
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: rgba(25, 35, 55, 0.8);
+  box-shadow: 0px 0px 30px rgba(0, 209, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+/* Starry animated background for the team container */
+.team-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
+  animation: moveStars 15s linear infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes moveStars {
+  from {
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Individual team member card */
+.team-member {
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  background: rgba(20, 30, 50, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 209, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.team-member:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 0px 20px rgba(0, 209, 255, 0.6), inset 0px 0px 15px rgba(0, 209, 255, 0.3);
+  border: 1px solid #00e1ff;
+}
+
+/* Neon glow effect on hover */
+.team-member::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 209, 255, 0.2), transparent);
+  transform: rotate(0deg);
+  transition: transform 1s linear;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.team-member:hover::before {
+  transform: rotate(360deg);
+}
+
+/* Profile image styling */
+.team-member img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid #00e1ff;
+  margin-bottom: 1em;
+  box-shadow: 0px 0px 10px rgba(0, 225, 255, 0.5);
+}
+
+/* Text and button styling */
+.team-member h3 {
+  color: #f9f9ff;
+  margin: 10px 0;
+  font-size: 1.4em;
+}
+
+.team-member p {
+  color: #b3d4ff;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.team-member a {
+  color: #00e1ff;
+  text-decoration: none;
+  border: 1px solid #00e1ff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.team-member a:hover {
+  background: #00e1ff;
+  color: #1a1a40;
+}
+
+/* Responsive layout */
+@media (min-width: 992px) {
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 767px) {
+.team-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+}
+
+
+.tier{
+  display: inline-block;
+}
+.middle-container {
+  display: flex; /* Use flexbox to layout the elements */
+  flex-wrap: wrap; /* Allow wrapping of content for smaller screens */
+  justify-content: center; /* Center elements horizontally */
+  gap: 20px; 
+  padding: 20px 50px; /* Padding: 20px top, 50px bottom */
+  text-align: center; /* Center-align text inside elements */
+}
+
+.top-container {
+  background: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+  radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+  radial-gradient(circle at 50% 70%, #2C003E, transparent 60%); 
+  text-align: center; /* Center text */
+  position: relative; /* Enable relative positioning */
+  display: inline-block; /* Use Flexbox for alignment */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+  justify-content: flex-start; /* Align content at the top */
+  padding: 5px; /* Add spacing around the content */
+  width: 100%; /* Ensure it spans full width */
+  min-height: 4em;
+}
+.bottom-container {
+  background: radial-gradient(circle at 20% 20%, #1D1B3A, transparent 60%),
+  radial-gradient(circle at 80% 30%, #0D3B66, transparent 60%),
+  radial-gradient(circle at 50% 70%, #2C003E, transparent 60%);
+  text-align: center; /* Center text */
+  position: relative; /* Enable relative positioning */
+  display: inline-block; /* Use Flexbox for alignment */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+  justify-content: center; /* Align content at the top */
+  padding: 20px; /* Add spacing around the content */
+  width: 100%; /* Ensure it spans full width */
+  box-sizing: border-box; /* Include padding in width/height calculation */
+  min-height: 7em; /* Minimum height for smaller content */
+}
+.fb-btn {
+  display: inline-block; /* Align text and icon horizontally */
+  align-items: center; /* Vertically center icon and text */
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  position:relative; /* Position the button in the container */
+  gap: 10px; /* Space between the icon and text */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover animation */
+  margin-left: 20px;
+}
+
+.fb-btn:hover {
+  background-color: #145dbf; /* Darker Facebook blue on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+.ig-btn {
+  display: inline-block; /* Align text and icon horizontally */
+  align-items: center; /* Vertically center icon and text */
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  position: relative; /* Position the button in the container */
+  gap: 10px; /* Space between the icon and text */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover animation */
+  margin-left: 20px;
+}
+
+.ig-btn:hover {
+  background-color:#145dbf;/* Darker Facebook blue on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+@keyframes slide-cart {
+  0% {
+      transform: translateX(100%); /* Start off-screen to the right */
+  }
+  50% {
+      transform: translateX(0); /* Slide to the original position */
+  }
+  100% {
+      transform: translateX(0); /* Stay in place */
+  }
+}
+body{
+  margin: 0;
+  font-size: 20px;
+}
+h1{
+  display: inline-block;
+  text-align: center;
+  font-size: 2em; /*em จะเปลี่ยนตามขนาด font และสืบทอดตาม body class แต่ถ้า px font จะคงที่*/
+  font-weight: bold;
+}
+.shoppingcart{
+  width: 100px;
+  height: auto;
+  position:absolute;
+  margin-left: 280px;
+  animation: slide-cart 2s ease-in-out; /* Apply animation */
+}
+.tier{
+  display: flex;
+  flex-direction: column; /* Ensure content is vertical */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding-bottom: 20px;
+  border: 1px solid #ddd; /* Optional: Add a border for better visualization */
+  border-radius: 8px;     /* Optional: Rounded corners */
+}
+.card-des{
+  text-align: left;
+  flex-grow: 1; /* Push the button down if content grows */
+}
+.tier-container {
+  display: flex;          /* Enable Flexbox */
+  flex-wrap: wrap;        /* Allow wrapping if necessary */
+  gap: 3em;              /* Add gap between items (adjust as needed) */
+  justify-content: space-around; /* Center-align the cards horizontally */
+  margin-top: auto;       /* Add some spacing at the top */
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push the button to the bottom */
+  flex-grow: 1; /* Make the body stretch to fill the remaining space */
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
