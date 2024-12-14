@@ -21,7 +21,7 @@ var product = [{
     type: 'shoe'
 },{
         id: 4,
-        img: 'https://th.bing.com/th/id/OIP.65_oJiIx-edHRNYoBADKFQHaHa?rs=1&pid=ImgDetMain',
+        img: 'https://cdn.shopify.com/s/files/1/0272/8257/1347/files/jbl_go3_blue_standard_aad1_1024x.webp?v=1687258579',
         name: 'JBL Go 3',
         price: 990,
         description: 'god go 3',
@@ -236,6 +236,47 @@ function deinitems(action, index) {
         $("#countitems"+index).text(cart[index].count)
         rendercart();
     }
+}
+function buy() {
+    // สร้างตัวแปร html เพื่อแสดงรายละเอียดของสินค้าในตะกร้า
+    let totalPrice = 0;
+    let html = '<ul>'; // เริ่มต้นรายการสินค้า
+
+    // วนลูปผ่านสินค้าทั้งหมดในตะกร้า
+    for (let i = 0; i < cart.length; i++) {
+        const itemTotal = cart[i].price * cart[i].count; // คำนวณราคาทั้งหมดของแต่ละรายการสินค้า
+        totalPrice += itemTotal; // คำนวณราคาทั้งหมดของทุกสินค้าที่อยู่ในตะกร้า
+
+        // สร้าง HTML ของสินค้าแต่ละรายการ
+        html += `<li>${cart[i].name} x ${cart[i].count} = ${numberWithCommas(itemTotal)} THB</li>`;
+    }
+    html += '</ul>'; // ปิดรายการสินค้า
+
+    // แสดง popup ขอบคุณพร้อมกับรายละเอียดของรายการสินค้าและราคาทั้งหมด
+    Swal.fire({
+        icon: 'success',
+        title: 'Thank you for your purchase!',
+        html: html + `<p><strong>Total Price: ${numberWithCommas(totalPrice)} THB</strong></p>`,  // แสดงราคาสุทธิ
+        showCancelButton: true,  // แสดงปุ่ม Cancel
+        confirmButtonText: 'Confirm',  // ปุ่มยืนยัน
+        cancelButtonText: 'Cancel',  // ปุ่มยกเลิก
+    }).then((res) => {
+        if (res.isConfirmed) {
+            // หากกดยืนยัน (Confirm)
+            cart = [];  // ล้างข้อมูลในตะกร้า
+            closeModal();  // ปิด modal ถ้ามี
+            $("#cartcount").css('display','none');  // ซ่อนจำนวนสินค้าตะกร้า
+            Swal.fire('Purchase confirmed!', 'Your items have been bought.', 'success'); // แจ้งเตือนการซื้อสำเร็จ
+        } else if (res.isDismissed) {
+            // หากกดปุ่ม Cancel
+            Swal.fire('Purchase cancelled!', 'Your cart has not been cleared.', 'info'); // แจ้งเตือนการยกเลิก
+        }
+    });
+}
+
+// ฟังก์ชันช่วยในการแสดงจำนวนเงินในรูปแบบที่มีคอมมา (เช่น 1,000 หรือ 10,000)
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
